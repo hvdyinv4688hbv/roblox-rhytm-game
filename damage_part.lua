@@ -1,4 +1,4 @@
---polytoria lua
+-- roblox studio luau
 local poisonous = false
 local damage = 50
 
