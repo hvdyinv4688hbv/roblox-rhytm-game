@@ -27,3 +27,15 @@ ServerScriptService
 
 # Description: 
 a polytoria game where players race together co op and try ti get to one of the three escapes per level. Another mode like fall guys basically where competitive first 7 to get there. Then next first 5. then 3 to get there. The. Next round first person to fet here wins.
+
+# DetailedDescription: 
+a polytoria game where players race together co op 
+    have elevatora that go down like in flood escape 2.
+
+
+and try ti get to one of the three escapes per level. 
+    have zone that waits for tiner to end of current round, and then sends players back
+
+is flood escape 2 uncopylocked? becuase my game is very similar. it will be useful and faster to know what scripts they use
+
+Another mode like fall guys basically where competitive first 7 to get there. Then next first 5. then 3 to get there. The. Next round first person to fet here wins.
