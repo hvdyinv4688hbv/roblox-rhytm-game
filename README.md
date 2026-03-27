@@ -1,14 +1,11 @@
 # roblox-rythm-game
 
 # Quick Visual of a Clean Professional Game Structure
-   ServerScriptService
- 
-  
+ServerScriptService
+  └─ Server (Folder)
    
-       └─ Server (Folder)
-   
-           ├─ Server.lua
-           └─ Modules (server-only)
+      ├─ Server.lua
+      └─ Modules (server-only)
 
  ReplicatedStorage
  
