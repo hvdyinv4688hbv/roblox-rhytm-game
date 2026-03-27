@@ -11,12 +11,16 @@
  ReplicatedStorage
  
    └─ Shared
+   
        ├─ Modules (shared)
        └─ Remotes
 
  StarterPlayer
+ 
    └─ StarterPlayerScripts
+   
        └─ Client (Folder)
+       
            ├─ Client.lua
            └─ Modules (client-only)
 
