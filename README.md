@@ -6,7 +6,7 @@
        ├─ Server.lua
        └─ Modules (server-only)
 
-- ReplicatedStorage
+ ReplicatedStorage
    └─ Shared
        ├─ Modules (shared)
        └─ Remotes
