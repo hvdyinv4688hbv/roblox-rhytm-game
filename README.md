@@ -2,7 +2,9 @@
 
 # Quick Visual of a Clean Professional Game Structure
  ServerScriptService
+ 
    └─ Server (Folder)
+   
        ├─ Server.lua
        └─ Modules (server-only)
 
