@@ -1,2 +1,69 @@
 -- roblox studio luau
-local infinite = true
+
+local infinite = true -- Your original variable (kept for reference; the tween handles the infinite looping)
+
+local TweenService = game:GetService("TweenService")
+local Workspace = game:GetService("Workspace")
+
+-- Settings (you can change these or make them per-part attributes if you want)
+local MOVE_TIME = 3          -- Seconds to go from one point to the other
+local EASING_STYLE = Enum.EasingStyle.Linear
+local EASING_DIRECTION = Enum.EasingDirection.InOut
+
+--[[
+    HOW TO USE THIS SCRIPT:
+    1. Put this Script in ServerScriptService (or anywhere that runs on the server).
+    2. For every Part you want to move:
+       - In the Properties window, add an Attribute called "moving" and set it to true (boolean).
+       - Add another Attribute called "targetPosition" and set it to the Vector3 of the second point.
+         Example: Vector3.new(0, 10, 0) would move 10 studs up from its starting spot.
+    3. The part will automatically move back and forth between its CURRENT position and the targetPosition forever.
+    4. Make sure the Part is Anchored = true (otherwise physics will fight the movement).
+--]]
+
+local function createInfiniteMover(part: BasePart)
+	if not part:IsA("BasePart") then
+		return
+	end
+
+	local startPosition = part.Position
+	local targetPosition = part:GetAttribute("targetPosition")
+
+	if typeof(targetPosition) ~= "Vector3" then
+		warn(`Part "{part.Name}" has 'moving' attribute but no valid 'targetPosition' Vector3 attribute!`)
+		return
+	end
+
+	local tweenInfo = TweenInfo.new(
+		MOVE_TIME,
+		EASING_STYLE,
+		EASING_DIRECTION,
+		-1,   -- Repeat count = infinite
+		true, -- Reverses = true (goes back and forth automatically)
+		0     -- Delay between repeats
+	)
+
+	local tween = TweenService:Create(part, tweenInfo, { Position = targetPosition })
+
+	-- Start the infinite back-and-forth movement
+	tween:Play()
+
+	-- Optional: store the tween on the part so you can stop it later if needed
+	part:SetAttribute("MovingTween", tween)
+end
+
+-- Find ALL parts that already exist in the workspace with the 'moving' attribute
+for _, descendant in ipairs(Workspace:GetDescendants()) do
+	if descendant:IsA("BasePart") and descendant:GetAttribute("moving") == true then
+		createInfiniteMover(descendant)
+	end
+end
+
+-- Also handle any new parts added later (dynamic)
+Workspace.DescendantAdded:Connect(function(descendant)
+	if descendant:IsA("BasePart") and descendant:GetAttribute("moving") == true then
+		createInfiniteMover(descendant)
+	end
+end)
+
+print("Infinite mover script loaded! All parts with 'moving' = true will now loop between their start position and targetPosition.")
