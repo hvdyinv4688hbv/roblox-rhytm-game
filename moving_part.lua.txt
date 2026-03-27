@@ -1,1 +1,2 @@
+-- roblox studio luau
 local infinite = true
