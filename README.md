@@ -1,17 +1,18 @@
 # roblox-rythm-game
 
 # Quick Visual of a Clean Professional Game Structure
-- ServerScriptService
+ ServerScriptService
    └─ Server (Folder)
        ├─ Server.lua
        └─ Modules (server-only)
 
  ReplicatedStorage
+ 
    └─ Shared
        ├─ Modules (shared)
        └─ Remotes
 
-- StarterPlayer
+ StarterPlayer
    └─ StarterPlayerScripts
        └─ Client (Folder)
            ├─ Client.lua
